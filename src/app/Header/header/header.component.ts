@@ -17,6 +17,6 @@ export class HeaderComponent implements OnInit {
   }
 
   navigate() {
-    this.router.navigate([''])
+    this.router.navigate(['characters'])
   }
 }
