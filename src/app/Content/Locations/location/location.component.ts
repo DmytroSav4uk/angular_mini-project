@@ -9,7 +9,7 @@ import {Subscription} from "rxjs";
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.css']
 })
-export class LocationComponent implements OnInit,OnDestroy {
+export class LocationComponent implements OnInit, OnDestroy {
 
 
   @Input()
@@ -18,18 +18,20 @@ export class LocationComponent implements OnInit,OnDestroy {
   @Input()
   url: string;
 
-  subscriptionGet:Subscription;
+  subscriptionGet: Subscription;
 
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: RickMortyService) {
   }
 
   ngOnInit(): void {
-   this.subscriptionGet = this.service.getLocation(this.url).subscribe(value => this.location = value)
+    if (this.url != null)
+      this.subscriptionGet = this.service.getLocation(this.url).subscribe(value => this.location = value)
   }
 
   ngOnDestroy() {
-    this.subscriptionGet.unsubscribe();
+    if (this.url != null)
+      this.subscriptionGet.unsubscribe();
   }
 
   getDetails(): void {

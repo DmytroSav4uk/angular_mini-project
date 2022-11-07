@@ -10,7 +10,7 @@ import {Subscription} from "rxjs";
   templateUrl: './character.component.html',
   styleUrls: ['./character.component.css']
 })
-export class CharacterComponent implements OnInit, OnDestroy{
+export class CharacterComponent implements OnInit, OnDestroy {
 
   @Input()
   character: ICharacter;
@@ -27,11 +27,13 @@ export class CharacterComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy() {
-    this.subscriptionGet.unsubscribe()
+    if (this.url != null)
+      this.subscriptionGet.unsubscribe()
   }
 
   ngOnInit(): void {
-    this.subscriptionGet = this.service.getCharByUrl(this.url).subscribe(value => this.character = value)
+    if (this.url != null)
+      this.subscriptionGet = this.service.getCharByUrl(this.url).subscribe(value => this.character = value)
   }
 
   getCharDetails() {
@@ -43,11 +45,11 @@ export class CharacterComponent implements OnInit, OnDestroy{
     this.router.navigate(["locations/" + this.character.location.url.match(/\d+$/)]
     )
   }
-    getOriginDetails()
-    {
-      this.router.navigate(["locations/" + this.character.origin.url.match(/\d+$/)]
-      )
-    }
+
+  getOriginDetails() {
+    this.router.navigate(["locations/" + this.character.origin.url.match(/\d+$/)]
+    )
+  }
 
   getURL() {
 

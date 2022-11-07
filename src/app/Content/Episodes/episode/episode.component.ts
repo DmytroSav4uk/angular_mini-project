@@ -10,7 +10,7 @@ import {Subscription} from "rxjs";
   templateUrl: './episode.component.html',
   styleUrls: ['./episode.component.css']
 })
-export class EpisodeComponent implements OnInit,OnDestroy {
+export class EpisodeComponent implements OnInit, OnDestroy {
 
   @Input()
   episode: IEpisode;
@@ -18,18 +18,20 @@ export class EpisodeComponent implements OnInit,OnDestroy {
   @Input()
   url: string;
 
-  subscriptionGet:Subscription;
+  subscriptionGet: Subscription;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: RickMortyService) {
   }
 
   ngOnInit() {
-  this.subscriptionGet = this.service.getEpisodeByUrl(this.url).subscribe(value => this.episode = value)
+    if (this.url != null)
+      this.subscriptionGet = this.service.getEpisodeByUrl(this.url).subscribe(value => this.episode = value)
   }
 
-ngOnDestroy() {
-    this.subscriptionGet.unsubscribe()
-}
+  ngOnDestroy() {
+    if (this.url != null)
+      this.subscriptionGet.unsubscribe()
+  }
 
   getDetails(): void {
     this.router.navigate(["episodes/" + this.episode.id]
