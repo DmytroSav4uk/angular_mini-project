@@ -4,11 +4,11 @@
 </div>
 
 <div>
-  <h1>{{character.name}}</h1>
-  <p class="noLink" >{{character.status}} - {{character.species}} - {{character.gender}}</p>
+  <h1 (click)="getCharDetails()">{{character.name}}</h1>
+  <p class="noLink"  >{{character.status}} - {{character.species}} - {{character.gender}}</p>
   <p class="opacity">Last known location:</p>
-  <p class="link">{{character.location.name}}</p>
+  <p (click)="getLocationDetails()" class="link">{{character.location.name}}</p>
   <p class="opacity">First seen in:</p>
-  <p class="link">{{character.origin.name}}</p>
+  <p (click)="getOriginDetails()" class="link">{{character.origin.name}}</p>
 </div>
 </div>

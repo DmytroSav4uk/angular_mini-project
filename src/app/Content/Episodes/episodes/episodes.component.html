@@ -8,7 +8,6 @@
 
 </div>
 
-
 <div class="paginator">
 <div class="pagesList" *ngFor="let page of pages" [ngClass]="{'active': (page==currentPage)}">
   <div class="pageButton" (click)="getEpisodes(page)">{{page}}</div>

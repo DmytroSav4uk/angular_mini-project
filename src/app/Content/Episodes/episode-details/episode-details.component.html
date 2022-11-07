@@ -1,9 +1,10 @@
-<div>
+<div class="card">
   <h1>{{episode.name}}</h1>
   <p>{{episode.episode}}</p>
   <p>{{episode.air_date}}</p>
 </div>
 
-<div>
-  {{episode.characters}}
+<h2>Characters from This Episode</h2>
+<div class="chars">
+  <app-character *ngFor="let character of episode.characters" [url]="character"></app-character>
 </div>

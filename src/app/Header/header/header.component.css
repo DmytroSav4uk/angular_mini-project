@@ -27,6 +27,31 @@ h1{
   position: absolute;
   left: 42%;
   top: 26px;
+}
 
+.links{
+  margin-top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: start;
 
+}
+
+a{
+  background: rgb(32, 35, 41);
+  margin: 10px;
+  height: 42px;
+  font-size: 27px;
+  color: white;
+  text-decoration: none;
+  font-family:Calibri ;
+  width: 200px;
+  transition: ease-in-out 0.3s;
+  text-align: center;
+}
+
+a:focus{
+  color: #949494;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }

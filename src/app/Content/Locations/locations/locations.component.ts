@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LocationResponse} from "../../../Interfaces/location.apiresponse.interface";
 import {RickMortyService} from "../../../Services/rick-morty.service";
 
@@ -9,17 +9,18 @@ import {RickMortyService} from "../../../Services/rick-morty.service";
 })
 export class LocationsComponent implements OnInit {
 
-  pages:number[];
+  pages: number[];
   currentPage = 1;
   locations: LocationResponse;
 
-  constructor(private service:RickMortyService) { }
+  constructor(private service: RickMortyService) {
+  }
 
   ngOnInit(): void {
     this.getLocations(this.currentPage)
   }
 
-  getLocations(page =1): void {
+  getLocations(page = 1): void {
     this.service.getAllLocations(page).subscribe(locations => {
       this.locations = locations;
       this.PushToPageArray(locations.info.pages);
@@ -30,10 +31,8 @@ export class LocationsComponent implements OnInit {
   PushToPageArray(totalPages: number): void {
     this.pages = [] as number[];
 
-    for(let counter:number = 1; counter<=totalPages; counter++) {
+    for (let counter: number = 1; counter <= totalPages; counter++) {
       this.pages.push(counter);
     }
   }
-
-
 }

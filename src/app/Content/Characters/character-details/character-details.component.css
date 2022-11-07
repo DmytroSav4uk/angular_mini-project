@@ -20,6 +20,12 @@ p{
   margin: 2px;
 }
 
+img{
+  margin-top: 10px;
+  width: 70%;
+  border-radius: 20px;
+}
+
 .chars{
   display: flex;
   flex-wrap: wrap;

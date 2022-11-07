@@ -6,12 +6,15 @@
   margin: auto;
   border-radius: 20px;
   font-family: Calibri;
-}
+  cursor: default;
+  }
 
 h1{
   margin: 2px;
 }
+
 h2{
+  cursor: default;
   color: white;
   text-align: center;
   font-family: Calibri;

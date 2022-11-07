@@ -1,0 +1,10 @@
+<div class="card">
+  <h1>{{location.name}}</h1>
+  <p>{{location.dimension}}</p>
+  <p>{{location.type}}</p>
+</div>
+
+<h2>Characters from This Location</h2>
+<div class="chars">
+<app-character *ngFor="let character of location.residents" [url]="character"></app-character>
+</div>

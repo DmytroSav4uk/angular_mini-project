@@ -1,5 +1,3 @@
-
-
 export class IEpisode {
   id: number;
   name: string;

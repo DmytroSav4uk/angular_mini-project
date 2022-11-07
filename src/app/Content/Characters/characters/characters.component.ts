@@ -35,8 +35,4 @@ export class CharactersComponent implements OnInit {
       this.pages.push(counter);
     }
   }
-
-//   pageIncrease() { }
-// pageDecrease() { }
-
 }

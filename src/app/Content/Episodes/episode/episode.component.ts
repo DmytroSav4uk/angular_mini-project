@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {IEpisode} from "../../../Interfaces/episode.interface";
 import {ActivatedRoute, Router} from "@angular/router";
+import {RickMortyService} from "../../../Services/rick-morty.service";
 
 
 @Component({
@@ -11,17 +12,22 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class EpisodeComponent implements OnInit {
 
   @Input()
-  episode:IEpisode;
+  episode: IEpisode;
 
-  constructor(private router:Router, private activatedRoute:ActivatedRoute) { }
+  @Input()
+  url: string;
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: RickMortyService) {
+  }
 
   ngOnInit() {
-
+    this.service.getEpisodeByUrl(this.url).subscribe(value => this.episode = value)
   }
 
 
-  getDetails():void{
-    this.router.navigate([this.episode.id],{relativeTo:this.activatedRoute})
+  getDetails(): void {
+    this.router.navigate(["episodes/" + this.episode.id]
+    )
   }
 
 }

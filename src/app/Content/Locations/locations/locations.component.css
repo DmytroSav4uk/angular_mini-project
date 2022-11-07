@@ -12,10 +12,6 @@
   justify-content: center;
 }
 
-.pagesList{
-
-}
-
 .pageButton{
   background: grey;
   margin: 10px;
@@ -25,9 +21,7 @@
   color: white;
   flex-wrap: wrap;
   border-radius: 10px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
 }

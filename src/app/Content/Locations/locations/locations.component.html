@@ -1,17 +1,12 @@
 <div class="background">
-
   <div class="father">
     <app-location *ngFor="let location of locations.results" [location]="location"></app-location>
   </div>
-
 </div>
-
-
 
 <div class="paginator">
   <div class="pagesList" *ngFor="let page of pages" [ngClass]="{'active': (page==currentPage)}">
     <div class="pageButton" (click)="getLocations(page)">{{page}}</div>
   </div>
-  <div>
   </div>
-</div>
+
