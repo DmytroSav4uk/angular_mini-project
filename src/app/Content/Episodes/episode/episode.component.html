@@ -1,3 +1,6 @@
+
+<ng-container *ngIf="episode">
+
 <div class="card" (click)="getDetails()">
  <h3>
    {{episode.name}}
@@ -6,6 +9,6 @@
   <p>Release date:{{episode.air_date}}</p>
   <p>{{episode.episode}}</p>
 </div>
-
+</ng-container>
 
 

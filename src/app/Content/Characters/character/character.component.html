@@ -1,14 +1,17 @@
-<div class="father">
+<ng-container *ngIf="character">
+
+<div class="father" >
 <div>
   <img src="{{character.image}}" alt="{{character.name}}">
 </div>
 
 <div>
-  <h1 (click)="getCharDetails()">{{character.name}}</h1>
+  <h1 (click)="getCharDetails()" >{{character.name}}</h1>
   <p class="noLink"  >{{character.status}} - {{character.species}} - {{character.gender}}</p>
   <p class="opacity">Last known location:</p>
-  <p (click)="getLocationDetails()" class="link">{{character.location.name}}</p>
+  <p (click)="getLocationDetails()"  (click)="getURL()" class="link">{{character.location.name}}</p>
   <p class="opacity">First seen in:</p>
-  <p (click)="getOriginDetails()" class="link">{{character.origin.name}}</p>
+  <p (click)="getOriginDetails()"  (click)="getURL()" class="link">{{character.origin.name}}</p>
 </div>
 </div>
+  </ng-container>

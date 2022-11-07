@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {IEpisode} from "../../../Interfaces/episode.interface";
 import {ActivatedRoute, Router} from "@angular/router";
 import {RickMortyService} from "../../../Services/rick-morty.service";
+import {Subscription} from "rxjs";
 
 
 @Component({
@@ -9,7 +10,7 @@ import {RickMortyService} from "../../../Services/rick-morty.service";
   templateUrl: './episode.component.html',
   styleUrls: ['./episode.component.css']
 })
-export class EpisodeComponent implements OnInit {
+export class EpisodeComponent implements OnInit,OnDestroy {
 
   @Input()
   episode: IEpisode;
@@ -17,13 +18,18 @@ export class EpisodeComponent implements OnInit {
   @Input()
   url: string;
 
+  subscriptionGet:Subscription;
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: RickMortyService) {
   }
 
   ngOnInit() {
-    this.service.getEpisodeByUrl(this.url).subscribe(value => this.episode = value)
+  this.subscriptionGet = this.service.getEpisodeByUrl(this.url).subscribe(value => this.episode = value)
   }
 
+ngOnDestroy() {
+    this.subscriptionGet.unsubscribe()
+}
 
   getDetails(): void {
     this.router.navigate(["episodes/" + this.episode.id]

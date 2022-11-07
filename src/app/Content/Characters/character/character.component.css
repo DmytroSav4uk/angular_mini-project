@@ -49,3 +49,7 @@ h1:hover {
   color: white;
   cursor: default;
 }
+
+p{
+  margin: 5px ;
+}

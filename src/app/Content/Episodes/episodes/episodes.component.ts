@@ -1,19 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 
 import {RickMortyService} from "../../../Services/rick-morty.service";
 import {EpisodeResponse} from "../../../Interfaces/episode.apiresponce.interface";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-episodes',
   templateUrl: './episodes.component.html',
   styleUrls: ['./episodes.component.css']
 })
-export class EpisodesComponent implements OnInit {
+export class EpisodesComponent implements OnInit,OnDestroy {
 
 
   episodes: EpisodeResponse;
   pages: number[];
   currentPage = 1;
+  subscriptionGet:Subscription;
+
 
   constructor(private service: RickMortyService) {
   }
@@ -22,9 +25,13 @@ export class EpisodesComponent implements OnInit {
     this.getEpisodes(this.currentPage)
   }
 
+  ngOnDestroy() {
+    this.subscriptionGet.unsubscribe()
+  }
+
 
   getEpisodes(page = 1): void {
-    this.service.getAllEpisodes(page).subscribe(episodes => {
+  this.subscriptionGet = this.service.getAllEpisodes(page).subscribe(episodes => {
       this.episodes = episodes;
       this.PushToPageArray(episodes.info.pages);
       this.currentPage = page;

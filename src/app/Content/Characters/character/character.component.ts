@@ -1,15 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ICharacter} from "../../../Interfaces/character.interface";
 import {RickMortyService} from "../../../Services/rick-morty.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ILocation} from "../../../Interfaces/location.interface";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-character',
   templateUrl: './character.component.html',
   styleUrls: ['./character.component.css']
 })
-export class CharacterComponent implements OnInit {
+export class CharacterComponent implements OnInit, OnDestroy{
 
   @Input()
   character: ICharacter;
@@ -20,16 +21,21 @@ export class CharacterComponent implements OnInit {
   @Input()
   location: ILocation
 
+  subscriptionGet: Subscription;
+
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private service: RickMortyService) {
   }
 
+  ngOnDestroy() {
+    this.subscriptionGet.unsubscribe()
+  }
+
   ngOnInit(): void {
-    this.service.getCharByUrl(this.url).subscribe(value => this.character = value)
+    this.subscriptionGet = this.service.getCharByUrl(this.url).subscribe(value => this.character = value)
   }
 
   getCharDetails() {
-    this.router.navigate(["characters/" + this.character.id],
-
+    this.router.navigate(["characters/" + this.character.id]
     )
   }
 
@@ -42,4 +48,8 @@ export class CharacterComponent implements OnInit {
       this.router.navigate(["locations/" + this.character.origin.url.match(/\d+$/)]
       )
     }
+
+  getURL() {
+
+  }
 }

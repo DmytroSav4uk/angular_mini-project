@@ -1,25 +1,31 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {IEpisode} from "../../../Interfaces/episode.interface";
 import {ActivatedRoute} from "@angular/router";
 import {RickMortyService} from "../../../Services/rick-morty.service";
 import {ICharacter} from "../../../Interfaces/character.interface";
-import {forkJoin} from "rxjs";
+import {forkJoin, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-episode-details',
   templateUrl: './episode-details.component.html',
   styleUrls: ['./episode-details.component.css']
 })
-export class EpisodeDetailsComponent implements OnInit {
+export class EpisodeDetailsComponent implements OnInit,OnDestroy {
 
   episode: IEpisode;
   character: ICharacter;
+  subscriptionGet: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private service: RickMortyService) {
   }
 
+  ngOnDestroy() {
+    this.subscriptionGet.unsubscribe();
+  }
+
+
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(({id}) => {
+    this.subscriptionGet = this.activatedRoute.params.subscribe(({id}) => {
       this.service.getEpisode(id).subscribe((value) => {
         this.episode = value;
         const allChars = [];
