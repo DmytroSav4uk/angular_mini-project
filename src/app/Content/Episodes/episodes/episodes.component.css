@@ -1,0 +1,32 @@
+.father{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: Helvetica;
+}
+
+.paginator{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagesList{
+
+}
+
+.pageButton{
+  background: grey;
+  margin: 10px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  color: white;
+  flex-wrap: wrap;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}

@@ -1,0 +1,18 @@
+
+<div class="background">
+
+<div class="father">
+  <app-character *ngFor="let character of characters.results" [character]="character"></app-character>
+</div>
+
+</div>
+
+
+
+<div class="paginator">
+  <div class="pagesList" *ngFor="let page of pages" [ngClass]="{'active': (page==currentPage)}">
+    <div class="pageButton" (click)="getCharacters(page)">{{page}}</div>
+  </div>
+<div>
+</div>
+</div>

@@ -1,0 +1,19 @@
+<div class="background">
+
+  <div class="father">
+
+
+<app-episode *ngFor="let episode of episodes.results" [episode]="episode"></app-episode>
+  </div>
+
+</div>
+
+
+<div class="paginator">
+<div class="pagesList" *ngFor="let page of pages" [ngClass]="{'active': (page==currentPage)}">
+  <div class="pageButton" (click)="getEpisodes(page)">{{page}}</div>
+</div>
+<div>
+</div>
+</div>
+

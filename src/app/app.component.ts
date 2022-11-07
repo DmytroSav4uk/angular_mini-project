@@ -8,3 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular_mini-project';
 }
+
+document.body.style.margin = "0";
+document.body.style.background = "rgb(32, 35, 41)";
+
+

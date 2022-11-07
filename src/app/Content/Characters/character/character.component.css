@@ -1,0 +1,51 @@
+.father {
+  display: flex;
+  width: 500px;
+  background: rgb(60, 62, 68);
+  margin: 10px 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: Helvetica;
+}
+
+img {
+  width: 200px;
+  height: 100%;
+}
+
+h1 {
+  color: white;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+h1:hover {
+  color: orange;
+}
+
+.link{
+  margin-left: 20px;
+  cursor: default;
+  color: white;
+  margin-bottom:2px ;
+  margin-top: 2px;
+  cursor: pointer;
+}
+
+.link:hover{
+  color: orange;
+}
+
+.opacity{
+  opacity: 50%;
+  margin-left: 20px;
+  color: white;
+  cursor: default;
+}
+
+.noLink{
+  margin-left: 20px;
+  color: white;
+  cursor: default;
+}

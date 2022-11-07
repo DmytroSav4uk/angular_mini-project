@@ -1,0 +1,18 @@
+p{
+  color: white;
+  font-size: 50px;
+  font-family: Calibri;
+}
+
+
+a{
+  color: white;
+}
+
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(50, 56, 65);
+  height: 200px;
+}

@@ -1,0 +1,21 @@
+.card{
+display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 400px;
+  background: rgb(60, 62, 68);
+  margin: 10px 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+h3{
+  color: orange;
+}
+
+p{
+  margin: 0;
+  color: white;
+}
